@@ -10,14 +10,21 @@
     <header>
         <h1>Horizon - Dashboard</h1>
     </header>
+
     <main>
-        <div class="card">
-            <a href="https://example.com" target="_blank">Application 1</a>
+        <!-- Formulaire d'ajout d'application -->
+        <div id="addAppForm">
+            <input type="text" id="appName" placeholder="Nom de l'application">
+            <input type="url" id="appUrl" placeholder="URL de l'application">
+            <button onclick="addApplication()">Ajouter</button>
         </div>
-        <div class="card">
-            <a href="https://example.com" target="_blank">Application 2</a>
+
+        <!-- Conteneur des applications -->
+        <div id="appsContainer">
+            <!-- Applications ajoutées apparaîtront ici -->
         </div>
     </main>
+
     <script src="/static/js/app.js"></script>
 </body>
 </html>
