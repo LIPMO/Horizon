@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Horizon Loaded!");
 
+    // Sélection des éléments
+    const toggleFormButton = document.getElementById("toggleForm");
+    const appFormContainer = document.getElementById("appFormContainer");
+
     // Afficher/Masquer le formulaire
-    document.getElementById("toggleForm").addEventListener("click", () => {
-        document.getElementById("appFormContainer").classList.toggle("hidden");
+    toggleFormButton.addEventListener("click", () => {
+        if (appFormContainer.classList.contains("hidden")) {
+            appFormContainer.classList.remove("hidden");
+            toggleFormButton.textContent = "✖ Fermer le formulaire";
+        } else {
+            appFormContainer.classList.add("hidden");
+            toggleFormButton.textContent = "+ Ajouter une application";
+        }
     });
 
     // Prévisualisation d’icône
