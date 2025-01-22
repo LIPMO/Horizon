@@ -1,81 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Horizon Dashboard Loaded!");
+    console.log("Horizon Loaded!");
 
-    // Gestion de l'affichage des paramètres
-    document.getElementById("toggleSettings").addEventListener("click", () => {
-        document.getElementById("settingsPanel").classList.toggle("hidden");
+    // Afficher/Masquer le formulaire
+    document.getElementById("toggleForm").addEventListener("click", () => {
+        document.getElementById("appFormContainer").classList.toggle("hidden");
     });
 
-    // Charger les applications
-    loadApplications();
+    // Ajouter une application
+    document.getElementById("appForm").addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        let formData = new FormData();
+        formData.append("name", document.getElementById("appName").value);
+        formData.append("url", document.getElementById("appUrl").value);
+        formData.append("icon", document.getElementById("appIcon").files[0]);
+
+        let response = await fetch("/add_app", {
+            method: "POST",
+            body: formData
+        });
+
+        let result = await response.json();
+        if (response.ok) {
+            alert("Application ajoutée !");
+            location.reload();
+        } else {
+            alert("Erreur : " + result.error);
+        }
+    });
 });
-
-function addApplication(event) {
-    event.preventDefault();
-
-    let appName = document.getElementById("appName").value;
-    let appUrl = document.getElementById("appUrl").value;
-    let appIcon = document.getElementById("appIcon").files[0];
-
-    if (!appName || !appUrl) {
-        alert("Veuillez entrer un nom et une URL valide !");
-        return;
-    }
-
-    let reader = new FileReader();
-    reader.onload = function(e) {
-        let appData = {
-            name: appName,
-            url: appUrl,
-            icon: e.target.result
-        };
-
-        let apps = JSON.parse(localStorage.getItem("apps")) || [];
-        apps.push(appData);
-        localStorage.setItem("apps", JSON.stringify(apps));
-
-        displayApplication(appData);
-    };
-
-    if (appIcon) {
-        reader.readAsDataURL(appIcon);
-    } else {
-        let appData = { name: appName, url: appUrl, icon: null };
-        let apps = JSON.parse(localStorage.getItem("apps")) || [];
-        apps.push(appData);
-        localStorage.setItem("apps", JSON.stringify(apps));
-        displayApplication(appData);
-    }
-
-    document.getElementById("appForm").reset();
-}
-
-function loadApplications() {
-    let apps = JSON.parse(localStorage.getItem("apps")) || [];
-    apps.forEach(displayApplication);
-}
-
-function displayApplication(app) {
-    let appsContainer = document.getElementById("appsContainer");
-
-    let appCard = document.createElement("div");
-    appCard.classList.add("card");
-
-    let appLink = document.createElement("a");
-    appLink.href = app.url;
-    appLink.target = "_blank";
-
-    if (app.icon) {
-        let iconImg = document.createElement("img");
-        iconImg.src = app.icon;
-        iconImg.alt = "Icône";
-        iconImg.classList.add("app-icon");
-        appLink.appendChild(iconImg);
-    }
-
-    appLink.appendChild(document.createTextNode(app.name));
-    appCard.appendChild(appLink);
-    appsContainer.appendChild(appCard);
-}
-
-document.getElementById("appForm").addEventListener("submit", addApplication);
