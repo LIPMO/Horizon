@@ -32,14 +32,14 @@ python app.py
 
 ### 4️⃣ Accéder au tableau de bord
 
--Localement : http://localhost:3000
--Sur le réseau : Utiliser l’IP locale de ton PC
+- Localement : http://localhost:3000
+- Sur le réseau : Utiliser l’IP locale de ton PC
 
 ### 📌 Personnalisation
 
--Ajouter des applications dans ```templates/index.html```
--Modifier les styles dans ```static/css/style.css```
--Ajouter des fonctionnalités en modifiant ```app.py```
+- Ajouter des applications dans ```templates/index.html```
+- Modifier les styles dans ```static/css/style.css```
+- Ajouter des fonctionnalités en modifiant ```app.py```
 
 ### 🛠️ Améliorations futures
 
