@@ -24,6 +24,7 @@
                     <input type="text" id="appName" placeholder="Nom de l'application" required>
                     <input type="url" id="appUrl" placeholder="URL de l'application" required>
                     <input type="file" id="appIcon" accept="image/*">
+                    <img id="previewIcon" src="/static/icons/default.png" alt="Aperçu icône" class="preview-icon">
                     <button type="submit">Ajouter</button>
                 </form>
             </div>
@@ -33,9 +34,7 @@
                 {% for app in apps %}
                 <div class="card">
                     <a href="{{ app.url }}" target="_blank">
-                        {% if app.icon %}
                         <img src="{{ app.icon }}" alt="Icône" class="app-icon">
-                        {% endif %}
                         {{ app.name }}
                     </a>
                 </div>
