@@ -6,6 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("appFormContainer").classList.toggle("hidden");
     });
 
+    // Prévisualisation d’icône
+    document.getElementById("appIcon").addEventListener("change", function() {
+        let file = this.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("previewIcon").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
     // Ajouter une application
     document.getElementById("appForm").addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -20,12 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
             body: formData
         });
 
-        let result = await response.json();
         if (response.ok) {
             alert("Application ajoutée !");
             location.reload();
-        } else {
-            alert("Erreur : " + result.error);
         }
     });
 });
