@@ -26,10 +26,6 @@ body {
     align-items: center;
 }
 
-.sidebar h2 {
-    margin-bottom: 20px;
-}
-
 button {
     background: #007bff;
     color: white;
@@ -42,18 +38,6 @@ button {
 
 button:hover {
     background: #0056b3;
-}
-
-/* 📋 Contenu principal */
-.content {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-/* 🎭 Formulaire caché */
-.hidden {
-    display: none;
 }
 
 /* 📦 Cartes d'applications */
@@ -76,5 +60,12 @@ button:hover {
     width: 50px;
     height: 50px;
     margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.preview-icon {
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
     border-radius: 8px;
 }
