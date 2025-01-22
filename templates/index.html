@@ -9,14 +9,18 @@
 <body>
     <header>
         <h1>Horizon - Dashboard</h1>
+        <button id="toggleSettings">⚙️ Ajouter une application</button>
     </header>
 
     <main>
         <!-- Formulaire d'ajout d'application -->
-        <div id="addAppForm">
-            <input type="text" id="appName" placeholder="Nom de l'application">
-            <input type="url" id="appUrl" placeholder="URL de l'application">
-            <button onclick="addApplication()">Ajouter</button>
+        <div id="settingsPanel" class="hidden">
+            <form id="appForm" enctype="multipart/form-data">
+                <input type="text" id="appName" placeholder="Nom de l'application" required>
+                <input type="url" id="appUrl" placeholder="URL de l'application" required>
+                <input type="file" id="appIcon" accept="image/*">
+                <button type="submit">Ajouter</button>
+            </form>
         </div>
 
         <!-- Conteneur des applications -->
