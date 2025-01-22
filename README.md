@@ -43,11 +43,11 @@ python app.py
 
 ### 🛠️ Améliorations futures
 
--✅ Ajouter une configuration JSON/YAML
--✅ Intégrer une authentification
--✅ Ajouter un mode sombre
--✅ Support des icônes personnalisées
--✅ Système de catégories
+- ✅ Ajouter une configuration JSON/YAML
+- ✅ Intégrer une authentification
+- ✅ Ajouter un mode sombre
+- ✅ Support des icônes personnalisées
+- ✅ Système de catégories
 
 ### 👨‍💻 Développeur
 
