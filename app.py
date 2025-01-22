@@ -4,14 +4,25 @@ import os
 
 app = Flask(__name__)
 DATA_FILE = "data/apps.json"
+ICONS_DIR = "static/icons/"
 
-# Vérifier si le fichier JSON existe
+# Vérifier si le fichier JSON et le dossier d'icônes existent
 if not os.path.exists("data"):
     os.makedirs("data")
+
+if not os.path.exists(ICONS_DIR):
+    os.makedirs(ICONS_DIR)
 
 if not os.path.exists(DATA_FILE):
     with open(DATA_FILE, "w") as f:
         json.dump([], f)
+else:
+    with open(DATA_FILE, "r") as f:
+        try:
+            json.load(f)  # Vérifier si le fichier JSON est valide
+        except json.JSONDecodeError:
+            with open(DATA_FILE, "w") as f:
+                json.dump([], f)  # Réinitialiser si corrompu
 
 # Route principale
 @app.route('/')
@@ -30,9 +41,9 @@ def add_app():
     if not name or not url:
         return jsonify({"error": "Nom et URL requis"}), 400
 
-    icon_path = None
+    icon_path = "static/icons/default.png"
     if icon:
-        icon_filename = f"static/icons/{icon.filename}"
+        icon_filename = f"{ICONS_DIR}{icon.filename}"
         icon.save(icon_filename)
         icon_path = icon_filename
 
