@@ -51,5 +51,5 @@ python app.py
 
 ### 👨‍💻 Développeur
 
--Créé par [Charles Baert]
--Licence MIT
+- Créé par Charles Baert
+- Licence MIT
