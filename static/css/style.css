@@ -1,13 +1,15 @@
+/* 🌑 Thème sombre */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #121212;
+    color: #ffffff;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #1e1e1e;
+    color: #ffffff;
     padding: 15px;
     text-align: center;
     font-size: 24px;
@@ -20,26 +22,61 @@ main {
     padding: 20px;
 }
 
+/* 🎨 Carte des applications */
 .card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background: #222;
+    border: 1px solid #444;
+    border-radius: 8px;
     margin: 10px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     width: 200px;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-size: 16px;
     font-weight: bold;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* 📌 Formulaire pour ajouter des apps */
+#addAppForm {
+    margin: 20px auto;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 8px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#addAppForm input {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+}
+
+#addAppForm button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#addAppForm button:hover {
+    background: #0056b3;
 }
