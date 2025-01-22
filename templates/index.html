@@ -7,27 +7,42 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Horizon - Dashboard</h1>
-        <button id="toggleSettings">⚙️ Ajouter une application</button>
-    </header>
+    <div class="container">
+        <!-- Menu latéral -->
+        <aside class="sidebar">
+            <h2>Horizon</h2>
+            <button id="toggleForm">+ Ajouter une application</button>
+        </aside>
 
-    <main>
-        <!-- Formulaire d'ajout d'application -->
-        <div id="settingsPanel" class="hidden">
-            <form id="appForm" enctype="multipart/form-data">
-                <input type="text" id="appName" placeholder="Nom de l'application" required>
-                <input type="url" id="appUrl" placeholder="URL de l'application" required>
-                <input type="file" id="appIcon" accept="image/*">
-                <button type="submit">Ajouter</button>
-            </form>
-        </div>
+        <!-- Contenu principal -->
+        <main class="content">
+            <h1>Tableau de bord</h1>
 
-        <!-- Conteneur des applications -->
-        <div id="appsContainer">
-            <!-- Applications ajoutées apparaîtront ici -->
-        </div>
-    </main>
+            <!-- Formulaire caché -->
+            <div id="appFormContainer" class="hidden">
+                <form id="appForm" enctype="multipart/form-data">
+                    <input type="text" id="appName" placeholder="Nom de l'application" required>
+                    <input type="url" id="appUrl" placeholder="URL de l'application" required>
+                    <input type="file" id="appIcon" accept="image/*">
+                    <button type="submit">Ajouter</button>
+                </form>
+            </div>
+
+            <!-- Liste des applications -->
+            <div id="appsContainer">
+                {% for app in apps %}
+                <div class="card">
+                    <a href="{{ app.url }}" target="_blank">
+                        {% if app.icon %}
+                        <img src="{{ app.icon }}" alt="Icône" class="app-icon">
+                        {% endif %}
+                        {{ app.name }}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
 
     <script src="/static/js/app.js"></script>
 </body>
